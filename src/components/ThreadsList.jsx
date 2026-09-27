@@ -6,6 +6,7 @@ import { INITIAL_THREADS } from "../utils/localData.js";
 export default function ThreadList() {
   const [threads, setThreads] = useState(INITIAL_THREADS);
 
+
   return (
     <div className="max-w-4xl mx-auto flex flex-col gap-4 w-full">
       <ThreadInput />
