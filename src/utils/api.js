@@ -11,7 +11,7 @@ function putAccessToken(token) {
 }
 
 function getAccessToken() {
-  localStorage.getItem('accessToken');
+  return localStorage.getItem('accessToken');
 }
 
 api.interceptors.request.use((config) => {

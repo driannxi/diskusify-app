@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import ThreadInput from './ThreadInput.jsx';
-import ThreadItem from './ThreadItem.jsx';
-import { INITIAL_THREADS } from '../utils/localData.js';
+import { useState } from "react";
+import ThreadInput from "./ThreadInput.jsx";
+import ThreadItem from "./ThreadItem.jsx";
+import { INITIAL_THREADS } from "../utils/localData.js";
 
 export default function ThreadList() {
   const [threads, setThreads] = useState(INITIAL_THREADS);
 
   return (
     <div className="max-w-4xl mx-auto flex flex-col gap-4 w-full">
-      <ThreadInput/>
+      <ThreadInput />
 
       <div className="bg-[#131b2e] rounded-xl p-4 shadow-md border border-[#232f48] flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -26,13 +26,11 @@ export default function ThreadList() {
         </div>
       </div>
 
-
       <div className="flex flex-col gap-3" id="thread-feed-list">
         {threads.map((thread) => (
           <ThreadItem key={thread.id} thread={thread} />
         ))}
       </div>
-
 
       <div className="flex items-center justify-between bg-[#131b2e] rounded-xl p-4 shadow-md border border-[#232f48]">
         <span className="text-xs text-slate-400">

@@ -1,4 +1,4 @@
-export default function Navbar() {
+export default function Navbar({ onLogout }) {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#0f172a]/95 backdrop-blur-xl border-b border-[#1e293b] shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
       <div className="h-16 max-w-[1320px] mx-auto px-6 sm:px-8 flex items-center justify-between gap-6">
@@ -50,8 +50,11 @@ export default function Navbar() {
             className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#232f48] bg-[#131b2e] hover:bg-[#1e293b] text-slate-300 hover:text-red-400 text-xs font-semibold transition-all cursor-pointer"
             title="Keluar dari akun"
             type="button"
+            onClick={onLogout}
           >
-            <span className="material-symbols-outlined text-[18px]">logout</span>
+            <span className="material-symbols-outlined text-[18px]">
+              logout
+            </span>
             <span>Keluar</span>
           </button>
           <div className="flex items-center gap-2 pl-2 border-l border-[#1e293b]">
