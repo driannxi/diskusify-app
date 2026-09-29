@@ -1,13 +1,14 @@
+import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
 import {
   getOwnProfile,
   login,
   putAccessToken,
   register,
-} from "../../utils/api";
+} from '../../utils/api';
 
 const ActionType = {
-  SET_AUTH: "SET_AUTH",
-  UNSET_AUTH: "UNSET_AUTH",
+  SET_AUTH: 'SET_AUTH',
+  UNSET_AUTH: 'UNSET_AUTH',
 };
 
 function setAuthActionCreator(user) {
@@ -25,19 +26,21 @@ function unsetAuthActionCreator() {
   };
 }
 
-//thunk funct
 function asyncRegister({ name, email, password }) {
-  return async () => {
+  return async (dispatch) => {
+    dispatch(showLoading());
     try {
       await register({ name, email, password });
     } catch (error) {
       alert(error.message);
     }
+    dispatch(hideLoading());
   };
 }
 
 function asyncLogin({ email, password }) {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const token = await login({ email, password });
       putAccessToken(token);
@@ -46,6 +49,7 @@ function asyncLogin({ email, password }) {
     } catch (error) {
       alert(error.message);
     }
+    dispatch(hideLoading());
   };
 }
 
@@ -53,7 +57,7 @@ function asyncLogout() {
   return (dispatch) => {
     try {
       dispatch(unsetAuthActionCreator());
-      putAccessToken("");
+      putAccessToken('');
     } catch (error) {
       alert(error.message);
     }

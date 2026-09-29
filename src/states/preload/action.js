@@ -1,8 +1,9 @@
-import { getOwnProfile } from "../../utils/api";
-import { setAuthActionCreator } from "../auth/action";
+import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
+import { getOwnProfile } from '../../utils/api';
+import { setAuthActionCreator } from '../auth/action';
 
 const ActionType = {
-  SET_PRELOAD: "SET_PRELOAD",
+  SET_PRELOAD: 'SET_PRELOAD',
 };
 
 function preloadActionCreator() {
@@ -11,9 +12,9 @@ function preloadActionCreator() {
   };
 }
 
-//thunk funct
 function asyncPreloadProcess() {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const user = await getOwnProfile();
       dispatch(setAuthActionCreator(user));
@@ -22,6 +23,7 @@ function asyncPreloadProcess() {
     } finally {
       dispatch(preloadActionCreator(false));
     }
+    dispatch(hideLoading());
   };
 }
 

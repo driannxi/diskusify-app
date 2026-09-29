@@ -1,8 +1,9 @@
-import { createThread } from "../../utils/api";
+import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
+import { createThread } from '../../utils/api';
 
 const ActionType = {
-  RECIVE_THREADS: "RECIVE_THREADS",
-  CREATE_THREAD: "CREATE_THREAD",
+  RECIVE_THREADS: 'RECIVE_THREADS',
+  CREATE_THREAD: 'CREATE_THREAD',
 };
 
 function reciveThreadsActionCreator(thread) {
@@ -21,12 +22,14 @@ function createThreadActionCreator(thread) {
 
 function asyncAddThread({ title, body }) {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const thread = await createThread({ title, body });
       dispatch(createThreadActionCreator(thread));
     } catch (error) {
       alert(error.message);
     }
+    dispatch(hideLoading());
   };
 }
 

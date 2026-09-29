@@ -1,9 +1,9 @@
-import { useDispatch, useSelector } from "react-redux";
-import ThreadList from "../components/ThreadsList";
-import ThreadInput from "../components/ThreadInput";
-import { useEffect } from "react";
-import asyncUsersAndThread from "../states/shared/action";
-import { asyncAddThread } from "../states/thread/action";
+import { useDispatch, useSelector } from 'react-redux';
+import ThreadList from '../components/ThreadsList';
+import ThreadInput from '../components/ThreadInput';
+import { useEffect } from 'react';
+import asyncUsersAndThread from '../states/shared/action';
+import { asyncAddThread } from '../states/thread/action';
 
 function HomePage() {
   const threads = useSelector((state) => state.threads);

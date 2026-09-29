@@ -1,5 +1,4 @@
-import { postedAt } from "../utils/index.js";
-import ThreadItem from "./ThreadItem.jsx";
+import ThreadItem from './ThreadItem.jsx';
 
 export default function ThreadList({ thread }) {
   return (
@@ -22,11 +21,7 @@ export default function ThreadList({ thread }) {
 
       <div className="flex flex-col gap-3" id="thread-feed-list">
         {thread.map((thread) => (
-          <ThreadItem
-            key={thread.id}
-            thread={thread}
-            time={postedAt(thread.createdAt)}
-          />
+          <ThreadItem key={thread.id} {...thread} />
         ))}
       </div>
 

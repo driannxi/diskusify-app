@@ -1,3 +1,4 @@
+
 export default function Navbar({ onLogout }) {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#0f172a]/95 backdrop-blur-xl border-b border-[#1e293b] shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
@@ -22,7 +23,7 @@ export default function Navbar({ onLogout }) {
               className="inline-flex items-center px-3 py-1.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-[#1e293b] text-xs font-semibold tracking-wide transition-colors"
               href="#"
             >
-              Leaderboard
+             Leaderboard
             </a>
             <a
               className="inline-flex items-center px-3 py-1.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-[#1e293b] text-xs font-semibold tracking-wide transition-colors"

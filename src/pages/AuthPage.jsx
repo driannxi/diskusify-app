@@ -1,11 +1,11 @@
-import { useState } from "react";
-import LoginInput from "../components/LoginInput";
-import RegisterInput from "../components/RegisterInput";
-import { useDispatch } from "react-redux";
-import { asyncLogin, asyncRegister } from "../states/auth/action";
+import { useState } from 'react';
+import LoginInput from '../components/LoginInput';
+import RegisterInput from '../components/RegisterInput';
+import { useDispatch } from 'react-redux';
+import { asyncLogin, asyncRegister } from '../states/auth/action';
 
 function AuthPage() {
-  const [activeTab, setActiveTab] = useState("login");
+  const [activeTab, setActiveTab] = useState('login');
   const dispatch = useDispatch();
 
   const handleLogin = ({ email, password }) => {
@@ -14,7 +14,7 @@ function AuthPage() {
 
   const handleRegister = ({ name, email, password }) => {
     dispatch(asyncRegister({ name, email, password }));
-    setActiveTab("login");
+    setActiveTab('login');
   };
 
   return (
@@ -30,16 +30,16 @@ function AuthPage() {
           <div className="flex bg-[#0b1326] p-1 rounded-lg mb-6 border border-[#1e293b]">
             <button
               className={`flex-1 py-2 rounded-md text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer ${
-                activeTab === "login"
-                  ? "bg-[#1e293b] text-white shadow-sm border border-[#334155]/60"
-                  : "text-slate-400 hover:text-white border border-transparent"
+                activeTab === 'login'
+                  ? 'bg-[#1e293b] text-white shadow-sm border border-[#334155]/60'
+                  : 'text-slate-400 hover:text-white border border-transparent'
               }`}
               type="button"
-              onClick={() => setActiveTab("login")}
+              onClick={() => setActiveTab('login')}
             >
               <span
                 className={`material-symbols-outlined text-base ${
-                  activeTab === "login" ? "text-[#6366f1]" : ""
+                  activeTab === 'login' ? 'text-[#6366f1]' : ''
                 }`}
               >
                 login
@@ -49,16 +49,16 @@ function AuthPage() {
 
             <button
               className={`flex-1 py-2 rounded-md text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer ${
-                activeTab === "register"
-                  ? "bg-[#1e293b] text-white shadow-sm border border-[#334155]/60"
-                  : "text-slate-400 hover:text-white border border-transparent"
+                activeTab === 'register'
+                  ? 'bg-[#1e293b] text-white shadow-sm border border-[#334155]/60'
+                  : 'text-slate-400 hover:text-white border border-transparent'
               }`}
               type="button"
-              onClick={() => setActiveTab("register")}
+              onClick={() => setActiveTab('register')}
             >
               <span
                 className={`material-symbols-outlined text-base ${
-                  activeTab === "register" ? "text-[#6366f1]" : ""
+                  activeTab === 'register' ? 'text-[#6366f1]' : ''
                 }`}
               >
                 person_add
@@ -68,7 +68,7 @@ function AuthPage() {
           </div>
 
           {/* Form Content */}
-          {activeTab === "login" ? (
+          {activeTab === 'login' ? (
             <LoginInput onLogin={handleLogin} />
           ) : (
             <RegisterInput onRegister={handleRegister} />

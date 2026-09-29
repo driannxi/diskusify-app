@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 function LoginInput({ onLogin }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
@@ -60,7 +60,7 @@ function LoginInput({ onLogin }) {
             id="login-password"
             placeholder="Masukkan kata sandi"
             required
-            type={showPassword ? "text" : "password"}
+            type={showPassword ? 'text' : 'password'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -69,14 +69,14 @@ function LoginInput({ onLogin }) {
           </span>
           <button
             aria-label={
-              showPassword ? "Sembunyikan kata sandi" : "Tampilkan kata sandi"
+              showPassword ? 'Sembunyikan kata sandi' : 'Tampilkan kata sandi'
             }
             className="absolute right-3 p-1 text-slate-400 hover:text-slate-200 transition rounded-md flex items-center justify-center cursor-pointer"
             type="button"
             onClick={() => setShowPassword(!showPassword)}
           >
             <span className="material-symbols-outlined text-lg">
-              {showPassword ? "visibility_off" : "visibility"}
+              {showPassword ? 'visibility_off' : 'visibility'}
             </span>
           </button>
         </div>

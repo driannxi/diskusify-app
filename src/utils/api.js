@@ -62,6 +62,10 @@ async function createComment({ threadId, content }) {
   const response = await api.post(`/threads/${threadId}/comments`, { content });
   return response.data.data.comment;
 }
+async function getLeaderboard() {
+  const response = await api.get('/leaderboards');
+  return response.data.data.leaderboards;
+}
 
 export {
   putAccessToken,
@@ -74,4 +78,5 @@ export {
   getDetailThread,
   createThread,
   createComment,
+  getLeaderboard
 };

@@ -1,8 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./auth/reducer";
-import preloadReducer from "./preload/reducer";
-import usersReducer from "./users/reducer";
-import threadsReducer from "./thread/reducer";
+import { configureStore } from '@reduxjs/toolkit';
+import authReducer from './auth/reducer';
+import preloadReducer from './preload/reducer';
+import usersReducer from './users/reducer';
+import threadsReducer from './thread/reducer';
+import threadDetailReducer from './threadDetail/reducer';
+import commentReducer from './comment/reducer';
+import { loadingBarReducer } from '@dimasmds/react-redux-loading-bar';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +13,9 @@ const store = configureStore({
     preload: preloadReducer,
     users: usersReducer,
     threads: threadsReducer,
+    threadDetail: threadDetailReducer,
+    comment: commentReducer,
+    loadingBar: loadingBarReducer,
   },
 });
 
