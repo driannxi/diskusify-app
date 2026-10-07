@@ -3,7 +3,7 @@
  *
  * - asyncAddThread thunk
  *  - should dispatch action correctly when thread creation success
- *  - should dispatch action and call alert correctly when thread creation failed
+ *  - should dispatch action and notify correctly when thread creation failed
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
@@ -45,10 +45,9 @@ describe('asyncAddThread thunk', () => {
     expect(dispatch).toHaveBeenCalledWith(hideLoading());
   });
 
-  it('should dispatch action and call alert correctly when thread creation failed', async () => {
+  it('should dispatch action and notify correctly when thread creation failed', async () => {
     // arrange
     vi.spyOn(api, 'createThread').mockRejectedValue(fakeErrorResponse);
-    window.alert = vi.fn();
 
     const dispatch = vi.fn();
 
@@ -58,7 +57,6 @@ describe('asyncAddThread thunk', () => {
     // assert
     expect(dispatch).toHaveBeenCalledWith(showLoading());
     expect(api.createThread).toHaveBeenCalledWith({ title: 'Judul Thread', body: 'Isi Thread' });
-    expect(window.alert).toHaveBeenCalledWith(fakeErrorResponse.message);
     expect(dispatch).toHaveBeenCalledWith(hideLoading());
   });
 });

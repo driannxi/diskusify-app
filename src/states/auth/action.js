@@ -1,4 +1,5 @@
 import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
+import { notify } from 'reapop';
 import {
   getOwnProfile,
   login,
@@ -31,8 +32,9 @@ function asyncRegister({ name, email, password }) {
     dispatch(showLoading());
     try {
       await register({ name, email, password });
+      dispatch(notify('Registrasi berhasil! Silakan masuk.', 'success'));
     } catch (error) {
-      alert(error.message);
+      dispatch(notify(error.message, 'error'));
     }
     dispatch(hideLoading());
   };
@@ -46,8 +48,9 @@ function asyncLogin({ email, password }) {
       putAccessToken(token);
       const user = await getOwnProfile();
       dispatch(setAuthActionCreator(user));
+      dispatch(notify('Login berhasil! Selamat datang.', 'success'));
     } catch (error) {
-      alert(error.message);
+      dispatch(notify(error.message, 'error'));
     }
     dispatch(hideLoading());
   };
@@ -58,8 +61,9 @@ function asyncLogout() {
     try {
       dispatch(unsetAuthActionCreator());
       putAccessToken('');
+      dispatch(notify('Anda telah berhasil keluar dari akun.', 'info'));
     } catch (error) {
-      alert(error.message);
+      dispatch(notify(error.message, 'error'));
     }
   };
 }
