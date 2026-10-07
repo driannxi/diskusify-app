@@ -48,7 +48,7 @@ describe('LoginInput component', () => {
 
     const emailInput = screen.getByPlaceholderText('nama@email.com');
     const passwordInput = screen.getByPlaceholderText('Masukkan kata sandi');
-    const loginButton = screen.getByRole('button', { name: /Log in to your account/i });
+    const loginButton = screen.getByRole('button', { name: /Masuk ke Akun/i });
 
     // action
     await userEvent.type(emailInput, 'test@example.com');

@@ -87,7 +87,7 @@ function LoginInput({ onLogin }) {
         className="mt-2 w-full py-2.5 px-4 rounded-lg bg-[#6366f1] hover:bg-indigo-600 text-white font-semibold text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 cursor-pointer"
         type="submit"
       >
-        <span>Log in to your account</span>
+        <span>Masuk ke Akun</span>
         <span className="material-symbols-outlined text-lg transition-transform">
           arrow_forward
         </span>
