@@ -1,4 +1,5 @@
 import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
+import { notify } from 'reapop';
 import { createThread } from '../../utils/api';
 
 const ActionType = {
@@ -26,8 +27,9 @@ function asyncAddThread({ title, body }) {
     try {
       const thread = await createThread({ title, body });
       dispatch(createThreadActionCreator(thread));
+      dispatch(notify('Thread baru berhasil dibuat!', 'success'));
     } catch (error) {
-      alert(error.message);
+      dispatch(notify(error.message, 'error'));
     }
     dispatch(hideLoading());
   };

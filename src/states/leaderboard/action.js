@@ -1,4 +1,5 @@
 import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
+import { notify } from 'reapop';
 import { getLeaderboard } from '../../utils/api';
 
 const ActionType = {
@@ -19,7 +20,7 @@ async function asyncReceiveLeaderboard() {
       const leaderboard = await getLeaderboard();
       dispatch(reciveLeaderBoardActionCreator(leaderboard));
     } catch (error) {
-      alert(error.message);
+      dispatch(notify(error.message, 'error'));
     }
     dispatch(hideLoading());
   };

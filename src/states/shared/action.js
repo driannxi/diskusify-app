@@ -1,4 +1,5 @@
 import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
+import { notify } from 'reapop';
 import { getAllThreads, getAllUsers } from '../../utils/api';
 import { reciveThreadsActionCreator } from '../thread/action';
 import { reciveUsersActionCreator } from '../users/action';
@@ -13,7 +14,7 @@ function asyncUsersAndThread() {
       dispatch(reciveThreadsActionCreator(threads));
       dispatch(reciveUsersActionCreator(users));
     } catch (error) {
-      alert(error.message);
+      dispatch(notify(error.message, 'error'));
     }
     dispatch(hideLoading());
   };

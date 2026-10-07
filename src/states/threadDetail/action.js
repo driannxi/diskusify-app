@@ -1,4 +1,5 @@
 import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
+import { notify } from 'reapop';
 import { getDetailThread } from '../../utils/api';
 
 const ActionType = {
@@ -35,7 +36,7 @@ function asyncThreadDetail(id) {
       const threadDetail = await getDetailThread(id);
       dispatch(threadDetailActionCreator(threadDetail));
     } catch (error) {
-      alert(error.message);
+      dispatch(notify(error.message, 'error'));
     }
     dispatch(hideLoading());
   };

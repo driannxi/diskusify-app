@@ -3,7 +3,7 @@
  *
  * - asyncLogin thunk
  *  - should dispatch action correctly when login success
- *  - should dispatch action and call alert correctly when login failed
+ *  - should dispatch action and notify correctly when login failed
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
@@ -49,12 +49,11 @@ describe('asyncLogin thunk', () => {
     expect(dispatch).toHaveBeenCalledWith(hideLoading());
   });
 
-  it('should dispatch action and call alert correctly when login failed', async () => {
+  it('should dispatch action and notify correctly when login failed', async () => {
     // arrange
     vi.spyOn(api, 'login').mockRejectedValue(fakeErrorResponse);
     vi.spyOn(api, 'putAccessToken').mockImplementation(() => {});
     vi.spyOn(api, 'getOwnProfile').mockImplementation(() => {});
-    window.alert = vi.fn();
 
     const dispatch = vi.fn();
 
@@ -64,7 +63,6 @@ describe('asyncLogin thunk', () => {
     // assert
     expect(dispatch).toHaveBeenCalledWith(showLoading());
     expect(api.login).toHaveBeenCalledWith({ email: 'john@example.com', password: 'wrong' });
-    expect(window.alert).toHaveBeenCalledWith(fakeErrorResponse.message);
     expect(dispatch).toHaveBeenCalledWith(hideLoading());
   });
 });

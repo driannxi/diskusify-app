@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { reducer as notificationsReducer } from 'reapop';
 import authReducer from './auth/reducer';
 import preloadReducer from './preload/reducer';
 import usersReducer from './users/reducer';
@@ -9,6 +10,7 @@ import { loadingBarReducer } from '@dimasmds/react-redux-loading-bar';
 
 const store = configureStore({
   reducer: {
+    notifications: notificationsReducer(),
     auth: authReducer,
     preload: preloadReducer,
     users: usersReducer,

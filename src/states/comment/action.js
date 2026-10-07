@@ -1,4 +1,5 @@
 import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
+import { notify } from 'reapop';
 import { createComment } from '../../utils/api';
 import { reciveUpdateCommentActionCreator } from '../threadDetail/action';
 
@@ -20,8 +21,9 @@ function asyncAddComment({ threadId = '', content }) {
       const comment = await createComment({ threadId, content });
       dispatch(addCommentActionCreator(comment));
       dispatch(reciveUpdateCommentActionCreator(comment));
+      dispatch(notify('Komentar berhasil ditambahkan!', 'success'));
     } catch (error) {
-      alert(error.message);
+      dispatch(notify(error.message, 'error'));
     }
     dispatch(hideLoading());
   };
