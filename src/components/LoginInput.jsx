@@ -5,14 +5,14 @@ function LoginInput({ onLogin }) {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (!email.trim() || !password) return;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email.trim() || !password) return;
 
-  //   if (onLogin) {
-  //     onLogin({ email: email.trim(), password });
-  //   }
-  // };
+    if (onLogin) {
+      onLogin({ email: email.trim(), password });
+    }
+  };
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -87,7 +87,7 @@ function LoginInput({ onLogin }) {
         className="mt-2 w-full py-2.5 px-4 rounded-lg bg-[#6366f1] hover:bg-indigo-600 text-white font-semibold text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 cursor-pointer"
         type="submit"
       >
-        <span>Masuk ke Akun</span>
+        <span>Log in to your account</span>
         <span className="material-symbols-outlined text-lg transition-transform">
           arrow_forward
         </span>
