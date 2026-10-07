@@ -5,14 +5,14 @@ function LoginInput({ onLogin }) {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!email.trim() || !password) return;
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (!email.trim() || !password) return;
 
-    if (onLogin) {
-      onLogin({ email: email.trim(), password });
-    }
-  };
+  //   if (onLogin) {
+  //     onLogin({ email: email.trim(), password });
+  //   }
+  // };
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
